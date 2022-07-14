@@ -1,0 +1,64 @@
+*{
+    font-family: cursive;
+}
+table, td {
+    border: 2px solid black;
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    font-size: 48px;
+}
+table{
+    border: none;
+}
+.score{
+    font-size: 42px;
+}
+/*.score > p{
+    text-align: center;
+    margin: 0;
+}*/
+input{
+    height: 100%;
+}
+#nextGame{
+    height: 100px;
+    width: 100%;
+    font-size: 100%;
+}
+.winner{
+    background-color: black;
+    color: white;
+}
+
+
+/*HTML 4 didn't allow ID's that start with a number and CSS still gives a bug after HTML 5, but it works with this
+2 different examples on id#0 and id#1*/
+[id='0'] {
+    border-top: none;
+    border-left: none;
+}
+#\31 { /*this is an escape for id, cause id simple #1 won't work*/
+    border-top: none;
+}
+[id='2'] {
+    border-top: none;
+    border-right: none;
+}
+[id='3'] {
+    border-left: none;
+}
+[id='5'] {
+    border-right: none;
+}
+[id='6'] {
+    border-bottom: none;
+    border-left: none;
+}
+[id='7'] {
+    border-bottom: none;
+}
+[id='8'] {
+    border-right: none;
+    border-bottom: none;
+}
