@@ -1,15 +1,15 @@
 var tableArray = [null, null, null, null, null, null, null, null, null];
 var tableHTMLArray = [null, null, null, null, null, null, null, null, null];
 var existenceArray = [false, false, false, false, false, false, false, false, false];//nepotrebno izgleda
-/*mozda je malo glupo sto je sve ovo niz i nije matrica, jer malo zbunjuje u kodu, ali
-sam ja smislio matematicke puteve kroz niz kao +1 za vodoravno, +3 za uspravno, +4 za glavnu dijagonalu,
-+2 za sporednu dijagonalu*/
+
+
+
 //var winsX = 0, winsO = 0, ties = 0;
 var wins1 = 0; wins2 = 0; ties = 0; matchNumber = -1;
 //var current1 = "(X)"; current2 = "(O)"; 
 var switchCurrent = "";
 var gameOverFalse = true;
-var turn = 0;//da li mozemo da ogranicimo turn na 9 i da vraca error ako je 9 ili vise?
+var turn = 0;
 document.getElementById("current2").textContent = "(X)";
 document.getElementById("current1").textContent = "(O)";
 
@@ -42,7 +42,7 @@ tableHTMLArray[8] = document.getElementById("8");
 
 
 function display(){
-    //Sta kad  bi prosledio parametar koji je koordinata i on bi upisao samo tu 1 vrednost umesto sve?!
+    
     //for(let i=0; i>9; i++){
         tableHTMLArray[0].textContent = tableArray[0];
         tableHTMLArray[1].textContent = tableArray[1];
@@ -55,10 +55,10 @@ function display(){
         tableHTMLArray[8].textContent = tableArray[8];
         // }
 }
-//ideja promenjena u ovu, svako dugme pita turn da li je vreme za iks ili oks.
+//svako dugme pita turn da li je vreme za iks ili oks.
 for(let i=0; i<9; i++){
     tableHTMLArray[i].addEventListener("click", function(){
-        if(gameOverFalse){//hteo sam da obrisem ceo event listener ali nisam umeo, pa sam stavio ovaj uslov!
+        if(gameOverFalse){
             write(i);
             if(turn > 4){
                 winChecker(i);
@@ -74,7 +74,7 @@ function refresher(){
     turn = 0;
     clearTable();
     display();
-    //DA LI OVDE TREBA DA SE UVEDE PROMENLJiVA ZA ELEMENT iLI JE OVO OKEJ?
+    
     document.getElementById("player1Score").textContent = wins1;
     document.getElementById("player2Score").textContent = wins2;
 
@@ -97,9 +97,9 @@ function refresher(){
 }
 refresher();
 document.getElementById("nextGame").addEventListener("click", function(){refresher();});
-//NAJBITNIJE PITANJE! ZASTO NE MOZE DIREKTNO REFRESHER? UOPSTE NE RADI POSLE PRVOG POZIVA!!!
+
 function xWins(){
-    if(matchNumber % 2){//otkrio sam da pitam da li je TRUE ili FALSE a ne deljivo!!! i dalje radi samo ne bas kako treba
+    if(matchNumber % 2){
         wins2++;
     } else{
         wins1++;
@@ -119,7 +119,7 @@ function oWins(){
     gameOverFalse = false;
 }
 function write(counter){
-    if(tableArray[counter] != "X" && tableArray[counter] != "O"){//uslov mozemo da pogledamo ponovo?
+    if(tableArray[counter] != "X" && tableArray[counter] != "O"){
         if(turn % 2 == 0){
             tableArray[counter] = "X";
             turn = turn+1;
@@ -133,7 +133,7 @@ function write(counter){
             console.log(tableArray);
         }
     }
-//ovde je bila ideja da uradim removeEventListener i tako kompletno unistim dugme sve do sledece partije!
+
 }
 
 /*if(tableHTMLArray[0].textContent != " " &&
@@ -152,7 +152,7 @@ tableHTMLArray[8].textContent != " "){
 
 //WIN CONDITIONS:
 //existence array - you don't want to check anything on places which are false! QUESTIONABLE!!! 
-//imao sam neku ideju sa flagovima, gde se stvaraju objekti ili promenljive koje prosto postoje i one se samo pitaju "sta je oko mene? u 8 smera" ali onda nisam umeo da implementiram bas. Ovo bi bilo korisno u igrama koje imaju vise polja!
+//
 function winChecker(counter){
     existenceArray[counter] = true;
     console.log(existenceArray);
