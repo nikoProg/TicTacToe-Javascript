@@ -105,6 +105,7 @@ function xWins(){
         wins1++;
     }
     console.log("X wins");
+    alert("X wins!");
     gameOverFalse = false;
 }
 function oWins(){
@@ -114,6 +115,7 @@ function oWins(){
         wins2++;
     }
     console.log("O wins");
+    alert("O wins!");
     gameOverFalse = false;
 }
 function write(counter){
